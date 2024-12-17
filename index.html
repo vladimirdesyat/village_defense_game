@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Village Defense Game</title>
+</head>
+<body>
+    <header>
+        <div class="indicator">
+            Villagers: <span id="villagers-count">10</span>
+        </div>
+        <div class="indicator">
+            Knights: <span id="knights-count">0</span>
+        </div>
+        <div class="indicator">
+            Pending Recruits: <span id="pending-recruits-count">0</span>
+        </div>
+        <div class="indicator">
+            Coins: <span id="coin-count">0</span>
+        </div>
+        <div class="indicator">
+            Time between robberies: <span id="robbery-time">7</span> days
+        </div>
+        <div class="indicator">
+            Robbery count: <span id="robbery-count">0</span>
+        </div>
+        <div class="indicator">
+            Day: <span id="day-count">1</span>
+        </div>
+        <button id="pause-game" class="indicator"><span class="emoji">⏸️</span> Pause</button>
+    </header>
+    <div id="game-screen" style="display:none;">
+        <div class="button-group">
+            <button id="crops"><span class="emoji">🌾</span> Collect Crops (1-5 coins)</button>
+        </div>
+        <div class="button-group">
+            <button id="payment"><span class="emoji">💰</span> Make Payment (3 coins)</button>
+        </div>
+        <div class="button-group">
+            <button id="recruits"><span class="emoji">🛡️</span> Recruit Knight (2 coins)</button>
+        </div>
+        <div class="button-group">
+            <button id="pass-day"><span class="emoji">🌤️</span> Pass Day</button>
+        </div>
+        <div id="status" class="indicator"></div>       
+    </div>
+    <div class="city-view">
+        <div class="city-grid">
+          <!-- Plots will be added here dynamically using JavaScript -->
+        </div>
+      </div>      
+    <div id="start-window" style="display:flex;">
+        <div class="overlay">
+            <div class="start-content">
+                <button id="start-game">Start Game</button>
+                <button id="view-credits">Credits</button>
+                <button id="game-options">Options</button>
+                <button id="save-game">Save Game</button>
+                <button id="load-game">Load Game</button>
+            </div>
+        </div>
+    </div>
+    <div id="pause-window" style="display:none;">
+        <div class="overlay">
+            <div class="pause-content">
+                <button id="resume-game">Resume Game</button>
+                <button id="save-game-pause">Save Game</button>
+                <button id="game-options-pause">Options</button>
+                <button id="quit-to-menu">Quit to Menu</button>
+            </div>
+        </div>
+    </div>
+    <div id="credits-window" style="display:none;">
+        <div class="overlay">
+            <div class="credits-content">
+                <p>Credits:</p>
+                <p>Developer: Vladimirdesyat</p>
+                <p>Artist: Artist Name</p>
+                <button id="close-credits">Close</button>
+            </div>
+        </div>
+    </div>
+    <div id="options-window" style="display:none;">
+        <div class="overlay">
+            <div class="options-content">
+                <h2>Game Options</h2>
+                <div class="option">
+                    <label for="robbery-time">Time between robberies:</label>
+                    <input type="number" id="robbery-time-input" value="7">
+                </div>
+                <button id="save-options">Save</button>
+                <button id="cancel-options">Cancel</button>
+            </div>
+        </div>
+    </div>    
+    <footer>
+        <div class="mountain-container">
+            <!-- Mountains will be generated here -->
+        </div>
+        <div id="village" class="emoji"></div>
+        <div id="knights" class="emoji"></div>
+        <div id="robber-path">
+            <div id="robbers" class="emoji"></div>
+        </div>
+    </footer>
+    <script type="module" src="game/app.js"></script>
+    <script type="module" src="game/menu.js"></script>
+    <script type="module" src="game/game.js"></script>
+    <script type="module" src="game/landScape.js"></script>
+    <script type="module" src="game/village.js"></script>
+    <script type="module" src="game/robbers.js"></script>
+</body>
+</html>

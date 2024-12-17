@@ -1,0 +1,335 @@
+header {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px;
+    background-color: #f0f0f0;
+    padding: 10px;
+}
+
+.indicator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    border: 1px solid #000;
+    border-radius: 5px;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: box-shadow 0.3s ease;
+    font-size: 16px;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.indicator:hover {
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.indicator span {
+    font-weight: bold;
+    color: green;
+}
+
+#game-screen {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    justify-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.button-group {
+    text-align: center;
+}
+
+button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+button .emoji {
+    font-size: 24px;
+    margin-right: 5px;
+}
+
+button:hover {
+    background-color: #3e8e41;
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+#status {
+    padding: 10px;
+    border: 1px solid #000;
+    background-color: #fff;
+    text-align: center;
+    margin: 4px 2px;
+}
+
+footer {
+    position: relative;
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 180px;
+    background-color: #f0f0f0;
+    padding: 10px 0;
+    z-index: 1; /* Ensure village, castle, and robbers are above mountains */
+}
+
+#village, #knights, #robber-path {
+    flex: 1;
+    text-align: center;
+    position: relative;
+    z-index: 2; /* Place village, castle, and robbers above mountains */
+}
+
+#robber-path {
+    position: relative;
+    overflow: hidden;
+    z-index: 3;
+}
+
+#robbers {
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.robber {
+    display: inline-block;
+    margin-right: 10px; /* Space between robbers */
+}
+
+@keyframes approach {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(0%); }
+}
+
+footer .emoji {
+    font-size: 100px;
+}
+
+.button-group div {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+    transition: background-color 0.3s ease;
+}
+
+#crops {
+    background-color: #ffcc00;
+}
+
+#crops:hover {
+    background-color: #ffd700;
+}
+
+#payment {
+    background-color: #ff6666;
+}
+
+#payment:hover {
+    background-color: #cc0000;
+}
+
+#recruits {
+    background-color: #66ccff;
+}
+
+#recruits:hover {
+    background-color: #0099ff;
+}
+
+#pass-day {
+    background-color: #15ff00;
+}
+
+#pass-day:hover {
+    background-color: #00cc00;
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+#scape {
+    background: #9dccf8;
+}
+
+footer img {
+    width: 50px;
+    height: 50px;
+}
+
+.mountain-container {
+    position: absolute;
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    z-index: 0; /* Place mountains behind other elements */
+}
+
+.mountain {
+    position: absolute;
+    width: 0;
+    border-left: 50px solid transparent;
+    border-right: 50px solid transparent;
+    border-bottom: 100px solid #333; /* Mountain color */
+    image-rendering: pixelated; /* Make the triangles pixelated */
+}
+
+/* Background layers */
+.sky {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    background: linear-gradient(to bottom, #000, #1a237e);
+    z-index: -1;
+}
+
+.stars {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    background-image: radial-gradient(circle at center, #fff 1%, transparent 1%);
+    background-size: 10px 10px;
+    opacity: 0.5;
+    z-index: -2;
+}
+
+.clouds {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.5), rgba(255,255,255,0.0));
+    z-index: 1; /* Place clouds above mountains */
+    pointer-events: none; /* Ensure clouds don't interfere with interactions */
+}
+
+.grass {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background: linear-gradient(to bottom, #00ff00, #33cc33);
+    z-index: -1;
+}
+
+.road {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    background: linear-gradient(to right, brown, brown);
+    z-index: -1;
+    clip-path: polygon(0% 0%, 100% 0%, 100% 50%, 0% 50%);
+}
+
+.villager, .knight {
+    display: inline-block;
+    margin-right: 10px; /* Space between emojis */
+    z-index: 1;
+}
+
+#start-window, #pause-window, #credits-window, #options-window {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.overlay {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.start-content, .pause-content, .credits-content, .options-content {
+    text-align: center;
+}
+
+.start-content button, .pause-content button, .credits-content button, .options-content button {
+    margin: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#pause-game{
+    background-color: #4CAF50;
+    margin: 0px 0px;
+}
+
+.city-view {
+    width: 800px;
+    height: 600px;
+    position: relative;
+  }
+  
+  .city-grid {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(10, 1fr);
+    gap: 2px;
+  }
+  
+  .plot {
+    width: 100%;
+    height: 100%;
+    background-color: #ccc; /* Default plot color */
+    position: relative;
+  }
+  
+  .building {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .building-barracks {
+    background-color: #888; /* Example color for barracks */
+  }
+  
+  .building-temple {
+    background-color: #aaa; /* Example color for temple */
+  }
+  
+  
